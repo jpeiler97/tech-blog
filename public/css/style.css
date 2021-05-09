@@ -5,16 +5,29 @@
 }
 
 header {
+	display: flex;
+	height: auto;
 	background-color: #e09264;
-	height: 75px;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
 header h1 {
-	display: block;
 	font-size: 40px;
 	font-family: 'rubik', sans-serif;
 	color: rgb(255, 229, 196);
 	margin: auto;
+	padding: 30px;
+}
+
+.nav-list {
+	display: flex;
 	padding: 20px;
+}
+
+.nav-list ul {
+	font-family: 'lato', sans-serif;
+	font-size: 30px;
 	text-align: center;
 }
