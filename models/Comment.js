@@ -31,7 +31,10 @@ Comment.init(
 		}
 	},
 	{
-		sequelize
+		sequelize,
+		timestamps: false,
+		freezeTableName: true,
+		modelName: 'comment'
 	}
 );
 
