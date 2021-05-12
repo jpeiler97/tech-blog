@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 
 router.get('/', async (req, res) => {
 	try {
@@ -14,6 +14,29 @@ router.get('/', async (req, res) => {
 
 		const posts = postData.map((post) => post.get({ plain: true }));
 		res.render('homepage', { posts });
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
+
+router.get('/post/:id', async (req, res) => {
+	try {
+		const postData = await Post.findByPk(req.params.id, {
+			include: [
+				{
+					model: User,
+					attributes: [ 'name' ]
+				},
+				{
+					model: Comment,
+					attributes: [ 'body', 'userId', 'createdAt' ]
+				}
+			]
+		});
+
+		const posts = postData.get({ plain: true });
+		res.render('post-page', posts);
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
