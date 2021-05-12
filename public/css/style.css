@@ -3,6 +3,10 @@
 	width: 100%;
 }
 
+.blue {
+	background-color: #b7d3f3;
+}
+
 header {
 	display: flex;
 	height: auto;
