@@ -1,12 +1,13 @@
 
 <h1 id= "home-title">A Blog for Tech Geeks!</h1>
-{{#each posts as |post|}}
+
 <div class= "container">
+    {{#each posts as |post|}}
     <div class= "row">
         <div class= "col my-3 align-center">
             <h2>{{post.title}}</h2>
-            <h3>Post created at {{format_time post.createdAt}}</h3>
+            <h3>Post created on {{format_date post.createdAt}} at {{format_time post.createdAt}}</h3>
         </div>
-    </div> 
+    </div>
+    {{/each}} 
 </div>
-{{/each}}
