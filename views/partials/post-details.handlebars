@@ -1,8 +1,10 @@
-<div class= "row">
-    <div class= "col my-3 align-center">
+<div class= "row justify-content-center">
+    
+        <div class="card w-75 my-2">
         <a href= "/post/{{id}}">
-        <h2>{{title}}</h2>
+        <div class= "card-header">{{title}}</div>
         </a>
-        <h3>Post created on {{format_date createdAt}} at {{format_time createdAt}} by {{user.name}}</h3>
+        <div class= "card-body">Post created on {{format_date createdAt}} at {{format_time createdAt}} by {{user.name}}</div>
         </div>
-    </div>
+        
+</div>
