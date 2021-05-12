@@ -40,6 +40,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
 		});
 
 		const posts = postData.get({ plain: true });
+
 		res.render('post-page', { posts, logged_in: req.session.logged_in });
 	} catch (err) {
 		console.log(err);

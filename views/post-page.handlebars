@@ -1,15 +1,15 @@
 <div class = "container">
     <div class= "row justify-content-center p-3">
         <div class="card w-75 m-2">
-                <div class= "card-header blue">{{title}}</div>
-                <div class= "card-body"> {{body}}</div>
-                <div class= "card-footer bg-secondary text-light"> {{format_date createdAt}} | {{format_time createdAt}} | {{user.name}}</div>
+                <div class= "card-header blue">{{posts.title}}</div>
+                <div class= "card-body"> {{posts.body}}</div>
+                <div class= "card-footer bg-secondary text-light"> {{format_date posts.createdAt}} | {{format_time posts.createdAt}} | {{posts.user.name}}</div>
         </div>
     </div>
 
     <div id = "comment-title"> Comments: </div>
     
-    {{#each comments as |comment|}}
+    {{#each posts.comments as |comment|}}
     <div class= "row justify-content-center">
             <div class="card w-50 m-2">
                     <div class= "card-body"> {{comment.body}}</div>
