@@ -1,19 +1,23 @@
 <div class = "container">
     <div class= "row justify-content-center p-3">
         <div class="card w-75 m-2">
-                <div class= "card-header bg-dark text-light">{{title}}</div>
+                <div class= "card-header blue">{{title}}</div>
                 <div class= "card-body"> {{body}}</div>
-                <div class= "card-footer blue"> {{format_date createdAt}} | {{format_time createdAt}} | {{user.name}}</div>
+                <div class= "card-footer bg-secondary text-light"> {{format_date createdAt}} | {{format_time createdAt}} | {{user.name}}</div>
         </div>
     </div>
 
+    <div id = "comment-title"> Comments: </div>
     
     {{#each comments as |comment|}}
     <div class= "row justify-content-center">
             <div class="card w-50 m-2">
                     <div class= "card-body"> {{comment.body}}</div>
-                    <div class= "card-footer blue"> {{format_date comment.createdAt}} | {{format_time comment.createdAt}} | {{comment.user.name}}</div>
+                    <div class= "card-footer bg-secondary text-light"> {{format_date comment.createdAt}} | {{format_time comment.createdAt}} | {{comment.user.name}}</div>
             </div>
     </div>
+    {{else}}
+    <h1 id= "no-comments">No comments yet!</h1>
     {{/each}}
+
 </div>
