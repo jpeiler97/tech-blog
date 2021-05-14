@@ -9,11 +9,6 @@
         <div class= "card-footer">
             <div class= "row">
                 <div class= "col-3">
-                    <button class= "btn blue">
-                    <a href="/edit-post" id="edit-post-button">Edit post</a>
-                    </button>
-                </div>
-                <div class= "col-3">
                     <button class= "btn btn-danger delete-post-button">
                     Delete Post
                     </button>
@@ -23,7 +18,21 @@
             
         </div>
         </div>
-        
+        <form class="form update-form">
+                        <div class="form-group">
+                        <label for="update-title">Update your Title</label>
+                        <input class="form-input" type="text" id="update-title" value="{{posts.title}}"/>
+                        </div>
+                        <div class="form-group">
+                        <label for="comment-body">Update your post body</label>
+                        <input class="form-input" type="text" id="update-body" value="{{posts.body}}" />
+                        </div>
+                        <div class="form-group">
+                        <button class= "btn blue w-25 update-button" type="submit">Submit</button>
+                        </div>
+                </form>
     </div>
-    
+
+      
   <script src="/js/deletePost.js"></script>
+  <script src="/js/updatePost.js"></script>
