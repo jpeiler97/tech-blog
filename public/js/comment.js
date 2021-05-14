@@ -3,7 +3,6 @@ const commentHandler = async (event) => {
 
 	const body = document.querySelector('#comment-body').value;
 
-	console.log(body);
 	const response = await fetch('/api/comments/', {
 		method: 'POST',
 		body: JSON.stringify({ body }),
