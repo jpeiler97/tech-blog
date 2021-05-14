@@ -54,11 +54,22 @@ router.get('/post/:id', withAuth, async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
 	try {
-		const postData = await Post.findAll({ where: { userId: req.session.user_id } });
+		const postData = await Post.findAll({
+			where: { userId: req.session.user_id },
+			include: [
+				{
+					model: User,
+					exclude: [ 'password' ],
+					attributes: [ 'name' ]
+				}
+			]
+		});
+		const userNameData = await User.findOne({ where: { id: req.session.user_id } });
 
+		const user = userNameData.get({ plain: true });
 		const posts = postData.map((post) => post.get({ plain: true }));
 
-		res.render('dashboard', { posts, logged_in: req.session.logged_in, user_id: req.session.user_id });
+		res.render('dashboard', { posts, user, logged_in: req.session.logged_in, user_id: req.session.user_id });
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
