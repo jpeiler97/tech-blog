@@ -39,6 +39,10 @@ router.get('/post/:id', withAuth, async (req, res) => {
 			]
 		});
 
+		req.session.save(() => {
+			req.session.currentPostId = req.params.id;
+		});
+
 		const posts = postData.get({ plain: true });
 
 		res.render('post-page', { posts, logged_in: req.session.logged_in });
