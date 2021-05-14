@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 		});
 
 		const posts = postData.map((post) => post.get({ plain: true }));
-		res.render('homepage', { posts, logged_in: req.session.logged_in });
+		res.render('homepage', { posts, logged_in: req.session.logged_in, user_id: req.session.user_id });
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
@@ -45,7 +45,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
 
 		const posts = postData.get({ plain: true });
 
-		res.render('post-page', { posts, logged_in: req.session.logged_in });
+		res.render('post-page', { posts, logged_in: req.session.logged_in, user_id: req.session.user_id });
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
@@ -54,11 +54,11 @@ router.get('/post/:id', withAuth, async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
 	try {
-		const postData = await Post.findAll({});
+		const postData = await Post.findAll({ where: { userId: req.session.user_id } });
 
 		const posts = postData.map((post) => post.get({ plain: true }));
 
-		res.render('dashboard', { posts, logged_in: req.session.logged_in });
+		res.render('dashboard', { posts, logged_in: req.session.logged_in, user_id: req.session.user_id });
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
