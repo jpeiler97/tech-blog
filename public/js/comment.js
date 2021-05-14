@@ -1,4 +1,6 @@
 const commentHandler = async (event) => {
+	event.preventDefault();
+
 	const body = document.querySelector('#comment-body').value;
 
 	console.log(body);

@@ -71,3 +71,18 @@ header h1 {
 	text-align: center;
 	font-size: 20px;
 }
+
+.comment-form {
+	width: 50%;
+}
+
+#logout {
+	text-decoration: none;
+	color: black;
+	font-family: 'lato', sans-serif;
+	font-size: 30px;
+	text-align: center;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
