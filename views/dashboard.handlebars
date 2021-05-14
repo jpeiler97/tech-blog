@@ -3,43 +3,26 @@
 
 <h1 id= "your-posts-title"> Your posts:</h1>
 {{#each posts as |post|}}
-
-    <div class= "row justify-content-center">
-        <div class="card w-75 my-2">
-        <div class= "card-header">{{title}}</div>
-        <div class= "card-body">{{body}}</div>
-        <div class= "card-body"> {{format_date createdAt}} | {{format_time createdAt}}</div>
-        <div class= "card-footer">
-            <div class= "row">
-                <div class= "col-2">
-                    <button class= "btn blue">
-                    <a href="/edit-post" id="edit-post-button">Edit post</a>
-                    </button>
-                </div>
-                <div class= "col-2">
-                    <button class= "btn btn-danger">
-                    <a href="/delete-post" id="delete-post-button">Delete post</a>
-                    </button>
-                </div>
-            </div>
-            
-            
-        </div>
-        </div>
-        
-    </div>
-
+{{>dash-details}}
 {{/each}} 
 
 <div class= "container options-area">
-    <div class= "row">
-        <div class ="col">
-            <button class= "btn blue">
-                <a href="/new-post" id="new-post-button">Make a new post</a>
-            </button>
-        </div>
-        <div class ="col"></div>
+    <div class = "row w-50 justify-content-center my-4">
+                <form class="form post-form">
+                        <div class="form-group">
+                        <label for="post-title">Enter your post title</label>
+                        <input class="form-input" type="text" id="post-title" />
+                        </div>
+                        <div class="form-group">
+                        <label for="comment-body">Enter your post body</label>
+                        <input class="form-input" type="text" id="post-body" />
+                        </div>
+                        <div class="form-group">
+                        <button class= "btn blue w-25 post-button" type="submit">Submit</button>
+                        </div>
+                </form>
+        </div>  
     </div>
 </div>
 
-
+<script src="/js/post.js"></script>

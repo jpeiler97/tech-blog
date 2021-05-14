@@ -1,0 +1,29 @@
+<div class= "container">
+<div class= "row justify-content-center">
+        <div class="card w-75 my-2">
+        <div class= "card-header">
+            {{posts.title}}
+            </div>
+        <div class= "card-body">{{posts.body}}</div>
+        <div class= "card-body"> {{format_date posts.createdAt}} | {{format_time posts.createdAt}}</div>
+        <div class= "card-footer">
+            <div class= "row">
+                <div class= "col-3">
+                    <button class= "btn blue">
+                    <a href="/edit-post" id="edit-post-button">Edit post</a>
+                    </button>
+                </div>
+                <div class= "col-3">
+                    <button class= "btn btn-danger delete-post-button">
+                    Delete Post
+                    </button>
+                </div>
+            </div>
+            
+            
+        </div>
+        </div>
+        
+    </div>
+    
+  <script src="/js/deletePost.js"></script>

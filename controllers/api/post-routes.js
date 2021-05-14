@@ -6,12 +6,33 @@ router.post('/', async (req, res) => {
 		const postData = await Post.create({
 			title: req.body.title,
 			body: req.body.body,
-			userId: req.session.userId
+			userId: req.session.user_id
 		});
 
 		res.status(200).json(postData);
 	} catch (err) {
 		console.log(err);
+		res.status(500).json(err);
+	}
+});
+
+router.update('/', async (req, res) => {});
+
+router.delete('/', async (req, res) => {
+	try {
+		const postData = await Post.destroy({
+			where: {
+				id: req.session.currentPostId
+			}
+		});
+
+		if (!postData) {
+			res.status(404).json({ message: 'No post found with this id!' });
+			return;
+		}
+
+		res.status(200).json(postData);
+	} catch (err) {
 		res.status(500).json(err);
 	}
 });

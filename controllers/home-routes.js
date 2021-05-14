@@ -11,7 +11,8 @@ router.get('/', async (req, res) => {
 					exclude: [ 'password' ],
 					attributes: [ 'name' ]
 				}
-			]
+			],
+			order: [ [ 'updatedAt', 'DESC' ] ]
 		});
 
 		const posts = postData.map((post) => post.get({ plain: true }));
@@ -52,17 +53,49 @@ router.get('/post/:id', withAuth, async (req, res) => {
 	}
 });
 
+router.get('/userpost/:id', withAuth, async (req, res) => {
+	try {
+		const postData = await Post.findByPk(req.params.id, {
+			include: [
+				{
+					model: User,
+					exclude: [ 'password' ],
+					attributes: [ 'name' ]
+				},
+				{
+					model: Comment,
+					include: [ { model: User, exclude: [ 'password' ], attributes: [ 'name' ] } ],
+					attributes: [ 'body', 'createdAt' ]
+				}
+			]
+		});
+
+		req.session.save(() => {
+			req.session.currentPostId = req.params.id;
+		});
+
+		const posts = postData.get({ plain: true });
+
+		res.render('dash-page', { posts, logged_in: req.session.logged_in, user_id: req.session.user_id });
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
+
 router.get('/dashboard', withAuth, async (req, res) => {
 	try {
 		const postData = await Post.findAll({
 			where: { userId: req.session.user_id },
+
 			include: [
 				{
 					model: User,
 					exclude: [ 'password' ],
 					attributes: [ 'name' ]
 				}
-			]
+			],
+			order: [ [ 'updatedAt', 'DESC' ] ]
 		});
 		const userNameData = await User.findOne({ where: { id: req.session.user_id } });
 
