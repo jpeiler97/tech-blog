@@ -6,8 +6,9 @@
 {{>dash-details}}
 {{/each}} 
 
-<div class= "container options-area">
-    <div class = "row w-50 justify-content-center my-4">
+    <div class= "container">
+        <div class = "row justify-content-center my-4">
+            <div class= "col-6">
                 <form class="form post-form">
                         <div class="form-group">
                         <label for="post-title">Enter your post title</label>
@@ -15,14 +16,15 @@
                         </div>
                         <div class="form-group">
                         <label for="comment-body">Enter your post body</label>
-                        <input class="form-input" type="text" id="post-body" />
+                        <textarea class="form-input" type="text" id="post-body" rows="10"/></textarea>
                         </div>
                         <div class="form-group">
                         <button class= "btn blue w-25 post-button" type="submit">Submit</button>
                         </div>
                 </form>
+            </div>
+                
         </div>  
-    </div>
-</div>
+
 
 <script src="/js/post.js"></script>

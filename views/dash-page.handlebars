@@ -18,19 +18,22 @@
             
         </div>
         </div>
-        <form class="form update-form">
-                        <div class="form-group">
-                        <label for="update-title">Update your Title</label>
-                        <input class="form-input" type="text" id="update-title" value="{{posts.title}}"/>
-                        </div>
-                        <div class="form-group">
-                        <label for="comment-body">Update your post body</label>
-                        <input class="form-input" type="text" id="update-body" value="{{posts.body}}" />
-                        </div>
-                        <div class="form-group">
-                        <button class= "btn blue w-25 update-button" type="submit">Submit</button>
-                        </div>
-                </form>
+
+        <div class = "row w-50 justify-content-center my-4">
+            <form class="form update-form">
+                            <div class="form-group">
+                            <label for="update-title">Update your Title</label>
+                            <input class="form-input" type="text" id="update-title" value="{{posts.title}}"/>
+                            </div>
+                            <div class="form-group">
+                            <label for="update-body">Update your post body</label>
+                            <textarea class="form-input" type="text" id="update-body" rows="10">{{posts.body}}</textarea>
+                            </div>
+                            <div class="form-group">
+                            <button class= "btn blue w-25 update-button" type="submit">Submit</button>
+                            </div>
+            </form>
+        </div>
     </div>
 
       
