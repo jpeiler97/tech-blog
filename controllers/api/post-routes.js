@@ -28,7 +28,7 @@ router.put('/', async (req, res) => {
 			res.status(404).json({ message: 'No post found with this ID' });
 			return;
 		}
-		console.log(req.session.currentPostId);
+
 		res.status(200).json(postData);
 	} catch (err) {
 		res.status(400).json(err);
