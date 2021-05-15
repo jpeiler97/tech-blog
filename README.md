@@ -1,6 +1,8 @@
 
 # The Fantastic Tech Blog
-    
+
+Deployed application: https://boiling-wildwood-64656.herokuapp.com/
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
@@ -28,6 +30,10 @@ This is a small tech blog generated using Express, Sequelize and Handlebars. It 
 ## Usage
 1. Type 'npm start'
 2. When the console says it is listening, go to 'http://localhost:-insertPORT-' in your browser (PORT will be 3001 by default)
+
+![Home Page](public/images/screenshot1.png?raw=true "Home Page")
+![Log-in Page](public/images/screenshot2.png?raw=true "Logging In")
+![Post Page](public/images/screenshot3.png?raw=true "Post Page")
 
 <a name="license"></a>
 ## License
