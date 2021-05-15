@@ -19,7 +19,7 @@ This is a small tech blog generated using Express, Sequelize and Handlebars. It 
 <a name="installation"></a>
 ## Installation
 1. Clone into the repository.
-2. Install any dependencies in package.json by running 'npm i <dependencies'
+2. Install any dependencies in package.json by running 'npm i -insert dependencies-'
 3. Create a .ENV file based on the example and using your MySQL database username and password.
 3. Ensure that 'blog_db' is created in MySql, then type 'npm run seed'
 
@@ -27,7 +27,7 @@ This is a small tech blog generated using Express, Sequelize and Handlebars. It 
 <a name="usage"></a>
 ## Usage
 1. Type 'npm start'
-2. When the console says it is listening, go to 'http://localhost:<PORT>' in your browser (PORT will be 3001 by default)
+2. When the console says it is listening, go to 'http://localhost:-insertPORT-' in your browser (PORT will be 3001 by default)
 
 <a name="license"></a>
 ## License
