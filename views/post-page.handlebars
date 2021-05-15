@@ -12,8 +12,8 @@
     {{#each posts.comments as |comment|}}
     <div class= "row justify-content-center">
             <div class="card w-50 m-2">
-                    <div class= "card-body"> {{comment.body}}</div>
-                    <div class= "card-footer bg-secondary text-light"> {{format_date comment.createdAt}} | {{format_time comment.createdAt}} | {{comment.user.name}}</div>
+                    <div class= "card-body"> {{comments.body}}</div>
+                    <div class= "card-footer bg-secondary text-light"> {{format_date comments.createdAt}} | {{format_time comments.createdAt}} | {{comments.user.name}}</div>
             </div>
     </div>
     {{else}}
