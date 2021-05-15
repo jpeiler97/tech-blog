@@ -56,6 +56,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
 router.get('/userpost/:id', withAuth, async (req, res) => {
 	try {
 		const postData = await Post.findByPk(req.params.id, {
+			where: { userId: req.session.user_id },
 			include: [
 				{
 					model: User,
@@ -70,13 +71,17 @@ router.get('/userpost/:id', withAuth, async (req, res) => {
 			]
 		});
 
-		req.session.save(() => {
-			req.session.currentPostId = req.params.id;
-		});
+		if (postData.userId !== req.session.user_id) {
+			res.redirect('/');
+		} else {
+			req.session.save(() => {
+				req.session.currentPostId = req.params.id;
+			});
 
-		const posts = postData.get({ plain: true });
+			const posts = postData.get({ plain: true });
 
-		res.render('dash-page', { posts, logged_in: req.session.logged_in, user_id: req.session.user_id });
+			res.render('dash-page', { posts, logged_in: req.session.logged_in, user_id: req.session.user_id });
+		}
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
