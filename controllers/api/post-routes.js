@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 
 router.post('/', async (req, res) => {
+	//Post based on title, body and userId
 	try {
 		const postData = await Post.create({
 			title: req.body.title,
@@ -18,12 +19,14 @@ router.post('/', async (req, res) => {
 
 router.put('/', async (req, res) => {
 	try {
+		//Update post based on currentPostId
 		const postData = await Post.update(req.body, {
 			where: {
 				id: req.session.currentPostId
 			}
 		});
 
+		//If post doesn't exist, throw error
 		if (!postData[0]) {
 			res.status(404).json({ message: 'No post found with this ID' });
 			return;
@@ -37,12 +40,14 @@ router.put('/', async (req, res) => {
 
 router.delete('/', async (req, res) => {
 	try {
+		//Delete post based on currentPostId
 		const postData = await Post.destroy({
 			where: {
 				id: req.session.currentPostId
 			}
 		});
 
+		//If post doesn't exist, throw error
 		if (!postData) {
 			res.status(404).json({ message: 'No post found with this id!' });
 			return;

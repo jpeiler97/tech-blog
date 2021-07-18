@@ -3,6 +3,7 @@ const { Comment } = require('../../models');
 
 router.post('/', async (req, res) => {
 	try {
+		//Create comment based on body, userId, and postId
 		const commentData = await Comment.create({
 			body: req.body.body,
 			userId: req.session.user_id,

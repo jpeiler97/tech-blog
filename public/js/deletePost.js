@@ -1,11 +1,13 @@
-const deleteHandler = async (event) => {
+const deleteHandler = (event) => {
 	event.preventDefault();
 
-	const response = await fetch('/api/posts/', {
+	//Deletes post
+	const response = fetch('/api/posts/', {
 		method: 'DELETE',
 		headers: { 'Content-Type': 'application/json' }
 	});
 
+	//Redirects to dashboard after post deletion
 	if (response.ok) {
 		document.location.replace('/dashboard');
 	}
